@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import { UserProvider } from './Contexts/UserContext';
+import { AdminDash } from './Pages/AdminDash';
+import { Cars } from './Pages/Cars';
+import { Dashboard } from './Pages/Dashboard';
+import { Drivers } from './Pages/Drivers';
+import { Home } from './Pages/Home';
+import { Record } from './Pages/Record';
+import { Search } from './Pages/Search';
+import { Users } from './Pages/Users';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <UserProvider>
+          <Route path="/" component={Home} exact />
+          <Route path="/Dash" exact component={Dashboard} />
+          <Route path="/Cars" exact component={Cars} />
+          <Route path="/Driver" exact component={Drivers} />
+          <Route path="/Record" exact component={Record} />
+          <Route path="/Search" exact component={Search} />
+          <Route path="/AdminDash" exact component={AdminDash} />
+          <Route path="/Users" exact component={Users} />
+
+        </UserProvider>
+      </Switch>
+    </Router>
   );
 }
 

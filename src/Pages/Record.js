@@ -70,10 +70,12 @@ export const Record = () => {
       <form onSubmit={(e) => handleRecord(e)}>
         <label>Select Car</label>
         <select onChange={(e) => setState({ ...state, plate: e.target.value })}>
+          <option>Select cars</option>
           {carsArray}
         </select>
         <label>Select Driver</label>
         <select onChange={(e) => setState({ ...state, driver: e.target.value })}>
+          <option>Select drivers</option>
           {driverArray}
         </select>
         <input
@@ -89,6 +91,7 @@ export const Record = () => {
         />
         <label>Select cause</label>
         <select onChange={(e) => setState({ ...state, outcome: e.target.value })}>
+          <option>Select cause</option>
           <option>Expenses</option>
           <option>Income</option>
         </select>

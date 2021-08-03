@@ -3,7 +3,7 @@
   padding: 0%;
   box-sizing: border-box;
 }
-.header li {
+/* .header li {
   list-style-type: none;
 }
 .header li:hover {
@@ -36,4 +36,158 @@
   text-align: left;
   background-color: whitesmoke;
   color: black;
+} */
+.Homenav {
+  display: flex;
+  padding: 10px;
+  box-shadow: 3px 3px 10px #888;
+  position: sticky;
+  justify-content: space-between;
+  background-color: whitesmoke;
+}
+.Homenav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0rem 2rem 0rem;
+  list-style-type: none;
+}
+.Homenav ul li {
+  padding: 2px 8px;
+}
+.Homenav ul:hover {
+  cursor: pointer;
+}
+.container {
+  display: grid;
+  grid-template-areas: 'front left right ';
+  grid-template-columns: 2fr 2.5fr 1.5fr;
+  padding: 10px;
+  height: 90vh;
+}
+.top {
+  grid-area: 'front';
+  background-color: whitesmoke;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+}
+.menu {
+  grid-area: 'right';
+  background-color: white;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+}
+.content {
+  grid-area: 'left';
+  background-color: whitesmoke;
+  text-align: center;
+  padding: 10px;
+}
+.services ul {
+  list-style-type: none;
+}
+.houses ul {
+  list-style-type: none;
+}
+.memo ul {
+  list-style-type: none;
+}
+.services {
+  margin: 10px;
+}
+.houses {
+  margin: 10px;
+}
+.memo {
+  margin: 10px;
+}
+.abt ul {
+  list-style-type: none;
+}
+
+.jb {
+  border: none;
+  padding: 0.5rem 0.1rem;
+  width: 95%;
+  border-radius: 2px;
+  border-bottom: 1px solid black;
+  transition: all 0.5s;
+  margin: 5px;
+}
+.loginForm {
+  text-align: center;
+}
+.Lform {
+  color: black;
+  margin: 10px;
+  width: 25%;
+  padding: 5px;
+  padding: 7px;
+  margin-left: 490px;
+  margin-top: 200px;
+  background-color: whitesmoke;
+}
+.sButton {
+  width: 95%;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding: 5px;
+  background-color: #f7c52a;
+  border: none;
+  color: white;
+}
+textarea {
+  padding: 10px;
+  width: 90%;
+  margin: 5px;
+  border-radius: 5px;
+}
+.Tbutton {
+  background-color: #f7c52a;
+  color: white;
+  padding: 5px;
+  border: none;
+}
+.jbk {
+  padding: 5px;
+}
+@media only screen and (max-width: 480px) {
+  .Homenav {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .Homenav ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0%;
+  }
+  .whole {
+    width: 100%;
+    height: 100vh;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+  }
+  .content {
+    width: 100%;
+  }
+  .top {
+    width: 100%;
+  }
+  .menu {
+    width: 100%;
+  }
+  .Lform {
+    margin-left: 10px;
+    margin-top: 120px;
+    width: 90%;
+    padding: 7px;
+  }
 }

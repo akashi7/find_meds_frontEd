@@ -1,5 +1,9 @@
 import { HomeNav } from '../Component/HomeNav';
+import { useHistory } from 'react-router-dom';
 export const UserSignUp = () => {
+
+  const History = useHistory();
+
   return (
     <div>
       <HomeNav />
@@ -21,6 +25,7 @@ export const UserSignUp = () => {
             className="jb"
           />
           <button className="sButton" type="button" >Sign Up</button>
+          <p className="ty" onClick={() => History.push('/login')} >Have account </p>
         </form>
       </div>
     </div>

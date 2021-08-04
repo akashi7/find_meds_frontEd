@@ -18,6 +18,9 @@ export const UserLogin = () => {
             className="jb"
           />
           <button className="sButton" type="button">Login</button>
+          <br></br>
+          <p>Forgot Password !</p>
+          <br></br>
         </form>
       </div>
     </div>

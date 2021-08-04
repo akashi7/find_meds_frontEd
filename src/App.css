@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 * {
   margin: 0%;
   padding: 0%;
@@ -129,6 +130,9 @@
   margin-top: 200px;
   background-color: whitesmoke;
 }
+.ty:hover {
+  cursor: pointer;
+}
 .sButton {
   width: 95%;
   margin-top: 10px;
@@ -137,6 +141,7 @@
   background-color: #f7c52a;
   border: none;
   color: white;
+  margin-bottom: 10px;
 }
 textarea {
   padding: 10px;

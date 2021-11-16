@@ -4,20 +4,11 @@ import { useHistory } from 'react-router-dom';
 
 
 const initialState = {
-  allCars: {
-    cars: []
+  Info: {
+    info: []
   },
-  allDrivers: {
-    drivers: []
-  },
-  allIncome: {
-    income: []
-  },
-  allExpense: {
-    expense: []
-  },
-  users: {
-    Users: []
+  Docs: {
+    allDocs: []
   }
 };
 
@@ -25,125 +16,60 @@ const initialState = {
 export const UserContext = createContext(initialState);
 export const UserProvider = ({ children }) => {
 
+  let url;
+  process.env.NODE_ENV === "development" ? url = `http://localhost:7000` : url = ``;
+
+
   const History = useHistory();
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
-  const ViewCars = async (token, tin) => {
 
+  const HAdminInfo = async (token) => {
     const config = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
       },
     };
 
-    const res = await (await (fetch(`http://localhost:9000/user/allCars?tin=${tin}`, config))).json();
+    const res = await (await fetch(`${url}/hAdmin/adminInfo`, config)).json();
     if (res.status === 200) {
       dispatch({
-        type: "CARS",
+        type: 'HADMIN_INFO',
         payload: res.data
       });
     }
     else if (res.status === 401) {
       localStorage.clear();
-      History.push('/');
+      History.push('/hadmin');
     }
-
   };
 
-  const ViewDrivers = async (token, tin) => {
-
+  const AllDoctors = async (token) => {
     const config = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
       },
     };
 
-    const res = await (await (fetch(`http://localhost:9000/user/allDrivers?tin=${tin}`, config))).json();
+    const res = await (await fetch(`${url}/hAdmin/allDocs`, config)).json();
     if (res.status === 200) {
       dispatch({
-        type: "DRIVERS",
+        type: 'ALL_DOCS',
         payload: res.data
       });
     }
     else if (res.status === 401) {
       localStorage.clear();
-      History.push('/');
+      History.push('/hadmin');
     }
 
   };
 
-  const ViewIncomes = async (token, tin) => {
-    const config = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-    };
-
-    const res = await (await (fetch(`http://localhost:9000/user/allIncome?tin=${tin}`, config))).json();
-    if (res.status === 200) {
-      dispatch({
-        type: "INCOMES",
-        payload: res.data
-      });
-    }
-    else if (res.status === 401) {
-      localStorage.clear();
-      History.push('/');
-    }
-  };
-
-
-  const ViewExpenses = async (token, tin) => {
-    const config = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-    };
-
-    const res = await (await (fetch(`http://localhost:9000/user/allExpenses?tin=${tin}`, config))).json();
-    if (res.status === 200) {
-      dispatch({
-        type: "EXPENSES",
-        payload: res.data
-      });
-    }
-    else if (res.status === 401) {
-      localStorage.clear();
-      History.push('/');
-    }
-  };
-
-  const GetAllUsers = async (token) => {
-    const config = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-    };
-    const res = await (await (fetch(`http://localhost:9000/admin/allUsers`, config))).json();
-    if (res.status === 200) {
-      dispatch({
-        type: "USERS",
-        payload: res.data
-      });
-    }
-    else if (res.status === 401) {
-      localStorage.clear();
-      History.push('/');
-    }
-  };
 
   return (
-    <UserContext.Provider value={{ ...state, ViewCars, ViewDrivers, ViewIncomes, ViewExpenses, GetAllUsers }} >
+    <UserContext.Provider value={{ ...state, HAdminInfo, AllDoctors }} >
       {children}
     </UserContext.Provider>
   );

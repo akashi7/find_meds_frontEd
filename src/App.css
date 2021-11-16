@@ -1,198 +1,115 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 * {
+  padding: 0;
   margin: 0%;
-  padding: 0%;
   box-sizing: border-box;
 }
-/* .header li {
-  list-style-type: none;
-}
-.header li:hover {
-  cursor: pointer;
-  color: brown;
-}
-#customers {
-  margin: 10px;
-  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 90%;
-}
-#customers td,
-#customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#customers tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#customers tr:hover {
-  background-color: #ddd;
-}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: whitesmoke;
-  color: black;
-} */
-.Homenav {
+.h_nav_bar {
   display: flex;
-  padding: 10px;
-  box-shadow: 3px 3px 10px #888;
-  position: sticky;
   justify-content: space-between;
-  background-color: whitesmoke;
-}
-.Homenav ul {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0rem 2rem 0rem;
-  list-style-type: none;
-}
-.Homenav ul li {
-  padding: 2px 8px;
-}
-.Homenav ul:hover {
-  cursor: pointer;
-}
-.container {
-  display: grid;
-  grid-template-areas: 'front left right ';
-  grid-template-columns: 2fr 2.5fr 1.5fr;
   padding: 10px;
-  height: 90vh;
+  background-color: yellowgreen;
+  border-bottom: 1px solid black;
+  color: white;
 }
-.top {
-  grid-area: 'front';
-  background-color: whitesmoke;
-  text-align: center;
-  align-items: center;
+.h_login_page {
+  margin-top: 100px;
+  background-color: yellowgreen;
+  margin-left: 300px;
+  width: 50%;
   padding: 10px;
 }
-.menu {
-  grid-area: 'right';
-  background-color: white;
-  text-align: center;
-  align-items: center;
-  padding: 10px;
-}
-.content {
-  grid-area: 'left';
-  background-color: whitesmoke;
-  text-align: center;
-  padding: 10px;
-}
-.services ul {
-  list-style-type: none;
-}
-.houses ul {
-  list-style-type: none;
-}
-.memo ul {
-  list-style-type: none;
-}
-.services {
-  margin: 10px;
-}
-.houses {
-  margin: 10px;
-}
-.memo {
-  margin: 10px;
-}
-.abt ul {
-  list-style-type: none;
-}
-
-.jb {
+.input {
   border: none;
   padding: 0.5rem 0.1rem;
-  width: 95%;
+  width: 90%;
   border-radius: 2px;
   border-bottom: 1px solid black;
   transition: all 0.5s;
-  margin: 5px;
-}
-.loginForm {
-  text-align: center;
-}
-.Lform {
-  color: black;
   margin: 10px;
-  width: 25%;
-  padding: 5px;
-  padding: 7px;
-  margin-left: 490px;
-  margin-top: 200px;
-  background-color: whitesmoke;
+  margin-left: 19px;
 }
-.ty:hover {
+.inputs {
+  border: 1px solid black;
+  padding: 0.5rem 0.1rem;
+  width: 90%;
+  border-radius: 2px;
+  border-bottom: 1px solid black;
+  transition: all 0.5s;
+  margin: 10px;
+  margin-left: 19px;
+}
+.h_login_page p {
+  margin-left: 20px;
+  color: white;
+}
+.button {
+  margin-top: 10px;
+  background: #f7c52a;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  width: 20%;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  margin-left: 19px;
+}
+.buttonk {
+  margin-top: 10px;
+  background: #f7c52a;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  width: fit-content;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  margin-left: 19px;
+}
+.Donot:hover {
   cursor: pointer;
 }
-.sButton {
-  width: 95%;
-  margin-top: 10px;
-  margin-left: 5px;
-  padding: 5px;
-  background-color: #f7c52a;
-  border: none;
-  color: white;
-  margin-bottom: 10px;
-}
-textarea {
+.h_dash_div {
+  display: grid;
+  grid-template-areas: 'left right';
   padding: 10px;
-  width: 90%;
-  margin: 5px;
-  border-radius: 5px;
+  display: flex;
 }
-.Tbutton {
-  background-color: #f7c52a;
-  color: white;
-  padding: 5px;
-  border: none;
+.left {
+  grid-area: 'left';
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
 }
-.jbk {
-  padding: 5px;
+.right {
+  grid-area: 'right';
+  width: 100%;
+  text-align: center;
+  padding: 10px;
 }
-@media only screen and (max-width: 480px) {
-  .Homenav {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .Homenav ul {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    margin: 0%;
-  }
-  .whole {
-    width: 100%;
-    height: 100vh;
-  }
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 10px;
-  }
-  .content {
-    width: 100%;
-  }
-  .top {
-    width: 100%;
-  }
-  .menu {
-    width: 100%;
-  }
-  .Lform {
-    margin-left: 10px;
-    margin-top: 120px;
-    width: 90%;
-    padding: 7px;
-  }
+.Pha_dash {
+  display: grid;
+  grid-template-areas: 'LEFT CENTER RIGHT';
+  padding: 10px;
+  display: flex;
+}
+.LEFT {
+  grid-area: 'LEFT';
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+.RIGHT {
+  grid-area: 'CENTER';
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  border-left: 1px solid black;
+}
+.CENTER {
+  grid-area: 'RIGHT';
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  border-left: 1px solid black;
 }

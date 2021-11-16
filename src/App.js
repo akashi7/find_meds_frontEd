@@ -1,44 +1,30 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-// import { UserProvider } from './Contexts/UserContext';
-// import { AdminDash } from './Pages/AdminDash';
-// import { Cars } from './Pages/Cars';
-// import { Dashboard } from './Pages/Dashboard';
-// import { Drivers } from './Pages/Drivers';
-// import { Home } from './Pages/Home';
-// import { Record } from './Pages/Record';
-// import { Search } from './Pages/Search';
-// import { Users } from './Pages/Users';
+import { UserProvider } from './Contexts/UserContext';
+import { Doc_login } from './Pages/Doc_login';
+import { HospitalPage } from './Pages/HospitalPage';
+import { H_dash } from './Pages/H_dash';
+import { H_signUp } from './Pages/H_signUp';
+import { PharmaPage } from './Pages/PharmaPage';
+import { P_dash } from './Pages/P_dash';
+import { P_signUp } from './Pages/P_signUp';
 
 
-import { HomePage } from './Page/HomePage';
-import { UserLogin } from './Page/UserLogin';
-import { UserSignUp } from './Page/UserSignUp';
 
 
 function App() {
   return (
-    // <Router>
-    //   <Switch>
-    //     <UserProvider>
-    //       <Route path="/" component={Home} exact />
-    //       <Route path="/Dash" exact component={Dashboard} />
-    //       <Route path="/Cars" exact component={Cars} />
-    //       <Route path="/Driver" exact component={Drivers} />
-    //       <Route path="/Record" exact component={Record} />
-    //       <Route path="/Search" exact component={Search} />
-    //       <Route path="/AdminDash" exact component={AdminDash} />
-    //       <Route path="/Users" exact component={Users} />
-
-    //     </UserProvider>
-    //   </Switch>
-    // </Router>
     <Router>
       <Switch>
-        <Route path="/" component={HomePage} exact />
-        <Route path="/signUp" component={UserSignUp} exact />
-        <Route path="/login" component={UserLogin} exact />
-        <Route />
+        <UserProvider>
+          <Route path="/h_page" component={HospitalPage} exact />
+          <Route path="/h_signUp" component={H_signUp} exact />
+          <Route path="/h_dash" component={H_dash} exact />
+          <Route path="/doc" component={Doc_login} exact />
+          <Route path="/p_page" component={PharmaPage} exact />
+          <Route path="/p_signUp" component={P_signUp} exact />
+          <Route path="/p_dash" component={P_dash} exact />
+        </UserProvider>
       </Switch>
     </Router>
   );

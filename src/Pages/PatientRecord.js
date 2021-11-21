@@ -17,6 +17,7 @@ export const PatientRecord = () => {
             <p style={{ marginLeft: "40px" }}>Ntakiyiruta frank</p>
           </div>
           <p>Desease (s) : Malaria</p>
+          <p>Report</p>
         </div>
       </div>
 

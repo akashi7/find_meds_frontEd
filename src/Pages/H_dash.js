@@ -14,7 +14,8 @@ export const H_dash = () => {
           <h4>NEW DOCTOR</h4>
           <form>
             <input placeholder="Full names" type="text" className="inputs" />
-            <input placeholder="telephone" type="text" className="inputs" />
+            <input placeholder="Telephone" type="text" className="inputs" />
+            <input placeholder="Role" type="text" className="inputs" />
             <input placeholder="Password" type="password" className="inputs" />
             <input placeholder="Confirm password" type="password" className="inputs" />
             <button className="button">Register</button>

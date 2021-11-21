@@ -113,3 +113,100 @@
   padding: 10px;
   border-left: 1px solid black;
 }
+#customers {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: yellowgreen;
+  color: white;
+}
+.Update {
+  background-color: darkgreen;
+  color: whitesmoke;
+}
+.Delete {
+  background-color: darkred;
+  color: whitesmoke;
+}
+.reception_reg {
+  margin-top: 100px;
+  background-color: yellowgreen;
+  margin-left: 300px;
+  width: 50%;
+  padding: 10px;
+}
+.search_P {
+  margin-top: 100px;
+  margin-left: 300px;
+  width: 50%;
+  padding: 10px;
+}
+.search_P p {
+  margin-left: 20px;
+  color: black;
+}
+.reception_reg p {
+  margin-left: 20px;
+  color: white;
+}
+.patient-code {
+  margin-top: 100px;
+  width: 50%;
+  margin-left: 300px;
+  text-align: center;
+}
+.p_info {
+  padding: 10px;
+  text-align: center;
+}
+.Doc_View_p {
+  display: grid;
+  grid-template-areas: 'INFO MEDS RECORD';
+  padding: 10px;
+  display: flex;
+}
+.INFO {
+  grid-area: 'LEFT';
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+.MEDS {
+  grid-area: 'MEDS';
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+.RECORD {
+  grid-area: 'RECORD';
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+.space {
+  margin-top: 50px;
+}
+.FLEX {
+  display: flex;
+  flex-direction: row;
+}

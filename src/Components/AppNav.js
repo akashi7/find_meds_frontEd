@@ -24,7 +24,8 @@ export const HospitalDashNav = () => {
 export const DoctorLogin = () => {
   return (
     <div className="h_nav_bar">
-      <h3>DOCTOR</h3>
+      <h3>WELCOME</h3>
+      <h3>Login Doctor/Receptionist</h3>
     </div>
   );
 };
@@ -47,6 +48,26 @@ export const PharmacyDashNav = () => {
     <div className="h_nav_bar">
       <h3>DASHBOARD</h3>
       <p onClick={() => history.push("/p_page")} className="Donot" >LOG OUT</p>
+    </div>
+  );
+};
+
+export const ReceptionistNav = () => {
+  const history = useHistory();
+  return (
+    <div className="h_nav_bar">
+      <h3>RECEPTION</h3>
+      <p onClick={() => history.push("/")} className="Donot" >LOG OUT</p>
+    </div>
+  );
+};
+
+export const DoctorNav = () => {
+  const history = useHistory();
+  return (
+    <div className="h_nav_bar">
+      <h3>DASHBOARD</h3>
+      <p onClick={() => history.push("/")} className="Donot" >LOG OUT</p>
     </div>
   );
 };

@@ -6,21 +6,20 @@ export const PatientRecord = () => {
   return (
     <div>
       <DoctorNav />
-      <div>
-        <div>
-          <div className="FLEX">
-            <p>Patient names</p>
-            <p style={{ marginLeft: "40px" }}>Akashi christian</p>
-          </div>
-          <div className="FLEX">
-            <p>Doctor names</p>
-            <p style={{ marginLeft: "40px" }}>Ntakiyiruta frank</p>
-          </div>
-          <p>Desease (s) : Malaria</p>
-          <p>Reports</p>
+      <div className="P_rec">
+        <div className="FLEX">
+          <p>Patient names :</p>
+          <p style={{ marginLeft: "40px" }}>Akashi christian</p>
         </div>
+        <div className="FLEX">
+          <p>Doctor names :</p>
+          <p style={{ marginLeft: "40px" }}>Ntakiyiruta frank</p>
+        </div>
+        <p className="io" >Desease (s) : Malaria</p>
+        <p className="io">Hospital Name: Faisal</p>
+        <p className="io">Date :12/2/2021</p>
+        <p className="io">Medecine (s) : Parcatamol</p>
       </div>
-
     </div>
   );
 };

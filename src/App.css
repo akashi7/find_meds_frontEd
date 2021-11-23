@@ -209,4 +209,31 @@
 .FLEX {
   display: flex;
   flex-direction: row;
+  text-align: center;
+  width: fit-content;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+.P_rec {
+  margin-top: 20px;
+  padding: 10px;
+  margin-left: 500px;
+}
+.io {
+  width: fit-content;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+.d_nav {
+  display: flex;
+  flex-direction: row;
+}
+.d_nav p {
+  padding: 2px 8px;
+}
+.d_nav p:hover {
+  cursor: pointer;
+}
+.h_nav_bar h3:hover {
+  cursor: pointer;
 }

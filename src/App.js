@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { UserProvider } from './Contexts/UserContext';
 import { DoctorDash } from './Pages/DoctorDash';
+import { DoctorProfile } from './Pages/DoctorProfile';
 import { Doc_login } from './Pages/Doc_login';
 import { HospitalPage } from './Pages/HospitalPage';
 import { H_dash } from './Pages/H_dash';
@@ -34,6 +35,7 @@ function App() {
           <Route path="/d_dash" component={DoctorDash} exact />
           <Route path="/doc/viewPatient" component={Patient_info} exact />
           <Route path="/doc/PatientRecord" component={PatientRecord} exact />
+          <Route path="/doc/profile" component={DoctorProfile} exact />
         </UserProvider>
       </Switch>
     </Router>

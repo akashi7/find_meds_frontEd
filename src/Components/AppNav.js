@@ -67,7 +67,11 @@ export const DoctorNav = () => {
   return (
     <div className="h_nav_bar">
       <h3>DASHBOARD</h3>
-      <p onClick={() => history.push("/")} className="Donot" >LOG OUT</p>
+      <div className="d_nav">
+        <p onClick={() => history.push('/doc/profile')}>PROFILE</p>
+        <p onClick={() => history.push("/")} className="Donot" >LOG OUT</p>
+      </div>
+
     </div>
   );
 };

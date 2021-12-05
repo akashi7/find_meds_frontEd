@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0%;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 .h_nav_bar {
   display: flex;
@@ -196,12 +197,14 @@
   width: 100%;
   text-align: center;
   padding: 10px;
+  border-left: 1px solid black;
 }
 .RECORD {
   grid-area: 'RECORD';
   width: 100%;
   text-align: center;
   padding: 10px;
+  border-left: 1px solid black;
 }
 .space {
   margin-top: 50px;
@@ -236,4 +239,71 @@
 }
 .h_nav_bar h3:hover {
   cursor: pointer;
+}
+.s_input {
+  padding: 5px;
+  width: 50px;
+}
+.send {
+  background-color: #f7c52a;
+}
+.send:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+  color: #f7c52a;
+}
+.LO:hover {
+  cursor: pointer;
+}
+.medList {
+  background-color: rgb(48, 45, 45);
+  width: 90%;
+  margin-left: 23px;
+  margin-top: -10px;
+}
+.medListInfo {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  color: white;
+}
+.checkBox {
+  padding: 10px;
+}
+.sentMed {
+  margin-top: 30px;
+  border: 1px solid #f7c52a;
+  height: 100px;
+  overflow-y: auto;
+}
+.sntDiv {
+  margin: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.x:hover {
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  padding: 1.5px;
+  border-radius: 10px;
+}
+.buttonz {
+  margin-top: 10px;
+  background: #f7c52a;
+  border: none;
+  padding: 10px;
+  border-radius: 2px;
+  width: 20%;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  margin-left: 19px;
+}
+.search-date {
+  padding: 5px;
+  align-items: center;
+  text-align: center;
+}
+.date-p {
+  margin-top: 100px;
 }

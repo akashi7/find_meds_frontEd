@@ -12,11 +12,16 @@ export const HospitalLoginSignUpNav = () => {
 };
 
 export const HospitalDashNav = () => {
+
   const history = useHistory();
+  const logOut = () => {
+    localStorage.clear();
+    history.push("/hospital");
+  };
   return (
     <div className="h_nav_bar">
       <h3>DASHBOARD</h3>
-      <p onClick={() => history.push("/h_page")} className="Donot" >LOG OUT</p>
+      <p onClick={() => logOut()} className="Donot" >LOG OUT</p>
     </div>
   );
 };
@@ -36,7 +41,7 @@ export const PharmacyLoginSignUpNav = () => {
     <div className="h_nav_bar">
       <h3>PHARMACY</h3>
       <div>
-        <p onClick={() => history.push("/p_signUp")} className="Donot" >SIGN UP</p>
+        <p onClick={() => history.push("/pharmacy/signUp")} className="Donot" >SIGN UP</p>
       </div>
     </div>
   );
@@ -46,32 +51,40 @@ export const PharmacyDashNav = () => {
   const history = useHistory();
   return (
     <div className="h_nav_bar">
-      <h3>DASHBOARD</h3>
-      <p onClick={() => history.push("/p_page")} className="Donot" >LOG OUT</p>
+      <h3 onClick={() => history.push('/p_dash')}>DASHBOARD</h3>
+      <p onClick={() => { localStorage.clear(); history.push("/pharmacy"); }} className="Donot" >LOG OUT</p>
     </div>
   );
 };
 
 export const ReceptionistNav = () => {
   const history = useHistory();
+
+  const logOut = () => {
+    localStorage.clear();
+    history.push("/");
+  };
   return (
     <div className="h_nav_bar">
       <h3>RECEPTION</h3>
-      <p onClick={() => history.push("/")} className="Donot" >LOG OUT</p>
+      <p onClick={() => logOut()} className="Donot" >LOG OUT</p>
     </div>
   );
 };
 
 export const DoctorNav = () => {
   const history = useHistory();
+  const logOut = () => {
+    localStorage.clear();
+    history.push("/");
+  };
   return (
     <div className="h_nav_bar">
-      <h3>DASHBOARD</h3>
+      <h3 onClick={() => history.push('/d_dash')} >DASHBOARD</h3>
       <div className="d_nav">
         <p onClick={() => history.push('/doc/profile')}>PROFILE</p>
-        <p onClick={() => history.push("/")} className="Donot" >LOG OUT</p>
+        <p onClick={() => logOut()} className="Donot" >LOG OUT</p>
       </div>
-
     </div>
   );
 };

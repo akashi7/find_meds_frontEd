@@ -13,6 +13,7 @@ import { Patient_info } from './Pages/Patient_info';
 import { PharmaPage } from './Pages/PharmaPage';
 import { P_dash } from './Pages/P_dash';
 import { P_signUp } from './Pages/P_signUp';
+import { P_viewPrev } from './Pages/P_viewPrev';
 import { Reception } from './Pages/Reception';
 
 
@@ -23,13 +24,14 @@ function App() {
     <Router>
       <Switch>
         <UserProvider>
-          <Route path="/h_page" component={HospitalPage} exact />
-          <Route path="/h_signUp" component={H_signUp} exact />
+          <Route path="/hospital" component={HospitalPage} exact />
+          <Route path="/hospital/signUp" component={H_signUp} exact />
           <Route path="/h_dash" component={H_dash} exact />
           <Route path="/" component={Doc_login} exact />
-          <Route path="/p_page" component={PharmaPage} exact />
-          <Route path="/p_signUp" component={P_signUp} exact />
+          <Route path="/pharmacy" component={PharmaPage} exact />
+          <Route path="/pharmacy/signUp" component={P_signUp} exact />
           <Route path="/p_dash" component={P_dash} exact />
+          <Route path="/pharmacy/:id" component={P_viewPrev} exact />
           <Route path="/rec_dash" component={Reception} exact />
           <Route path="/p_code" component={PatientCode} exact />
           <Route path="/d_dash" component={DoctorDash} exact />

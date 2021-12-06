@@ -22,15 +22,19 @@ export const Patient_info = () => {
   const [checked, setChecked] = useState(false);
   const [In, setIn] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingTwo, setLoadingTwo] = useState(false);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState('');
+  const [messageTwo, setMessageTwo] = useState('');
 
   const initialState = {
     medecines: [],
-    disease: ""
+    disease: "",
+    id_number: ""
   };
 
   const [state, setState] = useState(initialState);
+
 
   useEffect(() => {
     (async () => {
@@ -133,11 +137,48 @@ export const Patient_info = () => {
           window.location.reload();
         }, 4000);
       }
+      if (res.status === 307) {
+        setLoading(false);
+        setMessageTwo(res.message);
+      }
       else if (res.status === 401) {
         localStorage.clear();
         history.push('/');
       }
     }
+  };
+
+  const viewPrev = async (e) => {
+    e.preventDefault();
+    setLoadingTwo(true);
+    const config = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    };
+    const res = await (await fetch(`${url}/api/doc/viewPrevRecord?code=${tel}&&id_number=${state.id_number}`, config)).json();
+
+    if (res.status === 200) {
+      localStorage.setItem("ID", state.id_number);
+      history.push(`/doc/PatientRecord/${state.id_number}`);
+    }
+
+    if (res.status === 205) {
+      setLoadingTwo(false);
+      setMessageTwo(res.message);
+    }
+
+    else if (res.status === 409) {
+      setLoadingTwo(false);
+      setMessageTwo(res.error);
+    }
+
+    else if (res.status === 401) {
+      localStorage.clear();
+      history.push('/');
+    }
+
   };
 
   return (
@@ -146,6 +187,10 @@ export const Patient_info = () => {
       {message ?
         <div style={{ width: "100%", backgroundColor: "darkgreen", padding: "10px", textAlign: "center", color: "white" }}>
           {message}
+        </div> : ""}
+      {messageTwo ?
+        <div style={{ width: "100%", backgroundColor: "red", padding: "10px", textAlign: "center", color: "white" }}>
+          {messageTwo}
         </div> : ""}
       <div className="Doc_View_p" >
         <div className="INFO" >
@@ -210,8 +255,8 @@ export const Patient_info = () => {
           <h3>Previous record</h3>
           <div className="space">
             <label>Enter patient ID to view Previous Record</label>
-            <input placeholder="ID" type="text" className="inputs" />
-            <button className="buttonz">View</button>
+            <input placeholder="ID" type="text" className="inputs" onChange={(e) => setState({ ...state, id_number: e.target.value })} />
+            {loadingTwo ? <button className="buttonz">loading.....</button> : <button className="buttonz" onClick={(e) => viewPrev(e)} >View</button>}
           </div>
         </div>
       </div>

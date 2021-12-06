@@ -141,7 +141,7 @@ export const P_viewPrev = () => {
         : <div className="search-date">
           <p style={{ width: "fit-content", color: "darkgreen", backgroundColor: "whitesmoke", padding: "5px" }} onClick={Toogle}>Search</p>
           {pharmaMeds.medecines.length === 0 ? <p> No record today {today} </p>
-            : pharmaMeds.medecines.map(({ id, disease, medecines, date }) => {
+            : pharmaMeds.medecines.map(({ id, disease, medecines, date, status }) => {
               return (
                 <div key={id}>
                   <p>Medecines : {medecines}</p>
@@ -149,6 +149,8 @@ export const P_viewPrev = () => {
                   <p>Date : {date}</p>
                   <br></br>
                   <p>Disease : {disease} </p>
+                  {!status ? <button className="buttonz" onClick={(e, i) => Approve(e, id)} >Approve</button> :
+                    <button disabled className="buttonz">Approve</button>}
                 </div>
               );
             })}

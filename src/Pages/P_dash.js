@@ -33,7 +33,7 @@ export const P_dash = () => {
     success: "",
     med_name: "",
     quantity: "",
-    phone: "",
+    code: "",
     id_number: ""
   };
   const [state, setState] = useState(initialState);
@@ -235,7 +235,7 @@ export const P_dash = () => {
         <div className="RIGHT">
           <h4>Patient record</h4>
           <form onSubmit={(e) => handlePatient(e)}>
-            <input placeholder="Phone" type="text" className="inputs" onChange={(e) => setState({ ...state, phone: e.target.value })} />
+            <input placeholder="Code" type="text" className="inputs" onChange={(e) => setState({ ...state, code: e.target.value })} />
             <input placeholder="ID" type="text" className="inputs" onChange={(e) => setState({ ...state, id_number: e.target.value })} />
             {loadingTwo ? <button className="buttonk">loading....</button>
               : <button className="buttonk">Search</button>}

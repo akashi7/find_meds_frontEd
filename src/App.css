@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
+
 .h_nav_bar {
   display: flex;
   justify-content: space-between;
@@ -218,14 +219,12 @@
   padding: 10px;
 }
 .P_rec {
-  margin-top: 20px;
-  padding: 10px;
-  margin-left: 500px;
+  padding: 7px;
+  margin: 5px;
+  background-color: whitesmoke;
 }
 .io {
-  width: fit-content;
-  border-bottom: 1px solid black;
-  padding: 10px;
+  padding: 7px;
 }
 .d_nav {
   display: flex;
@@ -306,4 +305,17 @@
 }
 .date-p {
   margin-top: 100px;
+}
+.p_Record {
+  align-items: center;
+  padding: 10px;
+  height: 800px;
+  overflow-y: auto;
+}
+.d_flex {
+  display: flex;
+  justify-content: space-between;
+}
+.fo:hover {
+  cursor: pointer;
 }

@@ -4,6 +4,7 @@ import { UserProvider } from './Contexts/UserContext';
 import { DoctorDash } from './Pages/DoctorDash';
 import { DoctorProfile } from './Pages/DoctorProfile';
 import { Doc_login } from './Pages/Doc_login';
+import { Doc_recovery } from './Pages/Doc_recovery';
 import { HospitalPage } from './Pages/HospitalPage';
 import { H_dash } from './Pages/H_dash';
 import { H_signUp } from './Pages/H_signUp';
@@ -36,8 +37,9 @@ function App() {
           <Route path="/p_code" component={PatientCode} exact />
           <Route path="/d_dash" component={DoctorDash} exact />
           <Route path="/doc/viewPatient" component={Patient_info} exact />
-          <Route path="/doc/PatientRecord" component={PatientRecord} exact />
+          <Route path="/doc/PatientRecord/:id" component={PatientRecord} exact />
           <Route path="/doc/profile" component={DoctorProfile} exact />
+          <Route path="/doc/recovery" component={Doc_recovery} exact />
         </UserProvider>
       </Switch>
     </Router>

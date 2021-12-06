@@ -25,6 +25,11 @@ export const UserReducer = (state, action) => {
         ...state,
         pharmaMeds: action.payload
       };
+    case 'DOC_VIEW_MEDS':
+      return {
+        ...state,
+        docViewPrev: action.payload
+      };
     default:
       return null;
   }

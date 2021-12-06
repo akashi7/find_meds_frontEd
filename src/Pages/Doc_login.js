@@ -72,6 +72,7 @@ export const Doc_login = () => {
           {loading ? <button className="button" >Loading......</button>
             : <button className="button">Login</button>}
         </form>
+        <p className="fo" onClick={() => history.push('/doc/recovery')} >Forgot password?</p>
       </div>
     </div>
   );

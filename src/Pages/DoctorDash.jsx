@@ -44,10 +44,10 @@ export const DoctorDash=()=> {
       },
     };
 
-    const res = await (await fetch(`${url}/api/doc/SearchPat?phone=${phone}`, config)).json();
+    const res = await (await fetch(`${url}/api/doc/SearchPat?code=${phone}`, config)).json();
 
     if (res.status === 200){
-       localStorage.setItem('P_phone',res.phone)
+       localStorage.setItem('P_phone',res.code)
        history.push("/doc/viewPatient")
     }
     else if (res.status === 300) {
@@ -70,7 +70,7 @@ export const DoctorDash=()=> {
       <div className="search_P">
       <p>SEARCH PATIENT</p>
       <form onSubmit={(e)=>handleSearch(e)}>
-          <input placeholder="Phone" type="text" className="inputs" required onChange={(e)=>setPhone(e.target.value)} />
+          <input placeholder="Code" type="text" className="inputs" required onChange={(e)=>setPhone(e.target.value)} />
           {loading ? <button className="buttonk" >LOADING.....</button>
           :<button className="buttonk" >SEND</button>}
         </form>

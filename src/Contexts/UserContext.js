@@ -16,6 +16,9 @@ const initialState = {
   docMeds: [],
   pharmaMeds: {
     medecines: []
+  },
+  docViewPrev: {
+    userInfo: []
   }
 };
 
@@ -56,7 +59,7 @@ export const UserProvider = ({ children }) => {
 
   };
 
-  const viewPatient = async (token, phone) => {
+  const viewPatient = async (token, code) => {
 
     const config = {
       method: "GET",
@@ -65,7 +68,7 @@ export const UserProvider = ({ children }) => {
         Authorization: `Bearer ${token}`
       },
     };
-    const res = await (await fetch(`${url}/api/doc/SearchPat?phone=${phone}`, config)).json();
+    const res = await (await fetch(`${url}/api/doc/SearchPat?code=${code}`, config)).json();
     if (res.status === 200) {
       dispatch({
         type: 'VIEW_PATIENT',
@@ -143,10 +146,38 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const DocviewPrevRecord = async (token, code, id) => {
+    const config = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    };
+    const res = await (await fetch(`${url}/api/doc/viewPrevRecord?code=${code}&&id_number=${id}`, config)).json();
+    if (res.status === 200) {
+      dispatch({
+        type: 'DOC_VIEW_MEDS',
+        payload: res.data
+      });
+    }
+    else if (res.status === 401) {
+      localStorage.clear();
+      History.push('/');
+    }
+  };
+
 
 
   return (
-    <UserContext.Provider value={{ ...state, AllDoctors, viewPatient, pharmacyMedecines, docSeeAllMeds, pharmaViewTodayMeds }} >
+    <UserContext.Provider value={{
+      ...state,
+      AllDoctors,
+      viewPatient,
+      pharmacyMedecines,
+      docSeeAllMeds,
+      pharmaViewTodayMeds,
+      DocviewPrevRecord
+    }} >
       {children}
     </UserContext.Provider>
   );

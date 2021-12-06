@@ -33,6 +33,7 @@ export const Reception = () => {
 
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const [code, setCode] = useState('');
 
   const handlePatientReg = async (e) => {
 
@@ -54,8 +55,10 @@ export const Reception = () => {
     if (res.status === 200) {
       setLoading(false);
       setState({ ...state, success: "Patient registered succesfully" });
+      setCode(res.code);
+      document.getElementById("form").reset();
       setTimeout(() => {
-        window.location.reload();
+        setState({ ...state, success: "" });
       }, 4000);
     }
     else if (res.status === 205) {
@@ -83,9 +86,13 @@ export const Reception = () => {
         <div style={{ width: "100%", backgroundColor: "darkgreen", padding: "10px", textAlign: "center", color: "white" }}>
           {state.success}
         </div> : ""}
+      {code ?
+        <div style={{ width: "100%", backgroundColor: "darkgreen", padding: "10px", textAlign: "center", color: "white" }}>
+          Patient code is : {code}
+        </div> : ""}
       <div className="reception_reg">
         <p>REGISTER PATIENT</p>
-        <form onSubmit={(e) => handlePatientReg(e)} >
+        <form onSubmit={(e) => handlePatientReg(e)} id="form" >
           <input placeholder="FULL NAMES" type="text" className="inputs" onChange={(e) => setState({ ...state, full_names: e.target.value })} />
           <input placeholder="Tel" type="text" className="inputs" onChange={(e) => setState({ ...state, phone: e.target.value })} />
           <input placeholder="ID" type="text" className="inputs" onChange={(e) => setState({ ...state, id_number: e.target.value })} />

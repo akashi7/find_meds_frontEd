@@ -30,6 +30,11 @@ export const UserReducer = (state, action) => {
         ...state,
         docViewPrev: action.payload
       };
+    case 'VIEW_INSURANCES':
+      return {
+        ...state,
+        insurances: action.payload
+      };
     default:
       return null;
   }

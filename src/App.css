@@ -33,7 +33,7 @@
 }
 .inputs {
   border: 1px solid black;
-  padding: 0.5rem 0.1rem;
+  padding: 0.5rem 1rem;
   width: 90%;
   border-radius: 2px;
   border-bottom: 1px solid black;
@@ -151,7 +151,7 @@
   color: whitesmoke;
 }
 .reception_reg {
-  margin-top: 100px;
+  margin-top: 50px;
   background-color: yellowgreen;
   margin-left: 300px;
   width: 50%;
@@ -318,4 +318,19 @@
 }
 .fo:hover {
   cursor: pointer;
+}
+.title-div {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
+.insurances {
+  overflow: auto;
+  margin-bottom: 20px;
+}
+.insurance {
+  margin: 5px;
+  background-color: whitesmoke;
+  padding: 5px;
 }

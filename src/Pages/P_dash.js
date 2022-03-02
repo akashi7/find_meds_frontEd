@@ -8,7 +8,7 @@ export const P_dash = () => {
 
   let url;
 
-  const { phMeds, pharmacyMedecines } = useContext(UserContext);
+  const { phMeds, pharmacyMedecines, insurances, viewInsurance } = useContext(UserContext);
 
   process.env.NODE_ENV === "development" ? url = `http://localhost:7000` : url = ``;
 
@@ -23,6 +23,7 @@ export const P_dash = () => {
       }
       else {
         await pharmacyMedecines(token);
+        await viewInsurance(token);
       }
     })();
     //eslint-disable-next-line
@@ -34,13 +35,15 @@ export const P_dash = () => {
     med_name: "",
     quantity: "",
     code: "",
-    id_number: ""
+    id_number: "",
+    insurance: ""
   };
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [loadingTwo, setLoadingTwo] = useState(false);
   const [quantity, setQuantity] = useState('');
   const [quantityTwo, setQuantityTwo] = useState('');
+  const [see, setSee] = useState(false);
 
   const handleMedecine = async (e) => {
     e.preventDefault();
@@ -137,7 +140,7 @@ export const P_dash = () => {
 
   };
 
-  const handlePatient = async (e) => {
+  async function handlePatient(e) {
     e.preventDefault();
     setLoadingTwo(true);
     const config = {
@@ -166,6 +169,37 @@ export const P_dash = () => {
       localStorage.clear();
       history.push('/pharmacy');
     }
+  }
+
+  const toogle = () => setSee(!see);
+
+  const postInsurance = async (e) => {
+    e.preventDefault();
+    const config = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(state)
+    };
+    const res = await (await fetch(`${url}/api/pharma/insertInsurance`, config)).json();
+    if (res.status === 200) {
+      setState({ ...state, success: 'Insurance registered successfully' });
+      setTimeout(() => {
+        window.location.reload();
+      }, 4000);
+    }
+    if (res.status === 205) {
+      setState({ ...state, message: res.message });
+      setTimeout(() => {
+        setState({ ...state, message: '' });
+      }, 4000);
+    }
+    else if (res.status === 401) {
+      localStorage.clear();
+      history.push('/pharmacy');
+    }
   };
 
 
@@ -182,46 +216,74 @@ export const P_dash = () => {
         </div> : ""}
       <div className="Pha_dash">
         <div className="LEFT">
-          <h4>All medecines</h4>
-          <table id="customers">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <br></br>
-                <th>Quantity</th>
-                <br></br>
-                <th>Increase</th>
-                <br></br>
-                <th>Remove</th>
-                <br></br>
-                <th>Action</th>
-                <br></br>
-              </tr>
-            </thead>
-            <tbody>
-              {phMeds.allMeds.length === 0 ? <div style={{ padding: "10px", textAlign: "center" }}> No medecines yet </div>
-                : phMeds.allMeds.map(({ id, med_name, quantity }) => {
-                  return (
-                    <tr key={id}>
-                      <td>{med_name} </td>
-                      <br></br>
-                      <td>{quantity} </td>
-                      <br></br>
-                      <td >
-                        <input type="text" placeholder="0" className="s_input" onChange={(e) => setQuantity(e.target.value)} />
-                      </td>
-                      <br></br>
-                      <td >
-                        <input type="text" placeholder="0" className="s_input" onChange={(e) => setQuantityTwo(e.target.value)} />
-                      </td>
-                      <br></br>
-                      <td className="send" onClick={() => handleUpdate(id)} >SEND</td>
-                      <br></br>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
+          <div className="title-div" >
+            {see ? <h4>Insurances</h4> : <h4>All medecines</h4>}
+            {see ? <button className="buttonk" onClick={() => toogle()} >back</button> :
+              <button className="buttonk" onClick={() => toogle()} >see insurance</button>}
+          </div>
+          {!(see) ?
+            <table id="customers">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <br></br>
+                  <th>Quantity</th>
+                  <br></br>
+                  <th>Increase</th>
+                  <br></br>
+                  <th>Remove</th>
+                  <br></br>
+                  <th>Action</th>
+                  <br></br>
+                </tr>
+              </thead>
+              <tbody>
+                {phMeds.allMeds.length === 0 ? <div style={{ padding: "10px", textAlign: "center" }}> No medecines yet </div>
+                  : phMeds.allMeds.map(({ id, med_name, quantity }) => {
+                    return (
+                      <tr key={id}>
+                        <td>{med_name} </td>
+                        <br></br>
+                        <td>{quantity} </td>
+                        <br></br>
+                        <td >
+                          <input type="text" placeholder="0" className="s_input" onChange={(e) => setQuantity(e.target.value)} />
+                        </td>
+                        <br></br>
+                        <td >
+                          <input type="text" placeholder="0" className="s_input" onChange={(e) => setQuantityTwo(e.target.value)} />
+                        </td>
+                        <br></br>
+                        <td className="send" onClick={() => handleUpdate(id)} >SEND</td>
+                        <br></br>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table> :
+            <>
+              <div className="insurances" >
+                {insurances.insurance.length === 0 ? <div>
+                  <p> Insurance list empty </p>
+                </div> :
+                  insurances.insurance.map(({ id, insurance }) => {
+                    return (
+                      <div key={id} className="insurance" >
+                        <p>{insurance} </p>
+                      </div>
+                    );
+                  })}
+              </div>
+              <h4>Register Insurance</h4>
+              <div>
+                <form onSubmit={(e) => postInsurance(e)} >
+                  <input placeholder="Enter insurance" className="inputs" onChange={(e) => setState({ ...state, insurance: e.target.value })} />
+                  <button className="buttonk">SEND</button>
+                </form>
+              </div>
+            </>
+
+          }
         </div>
         <div className="CENTER">
           <h4>Register new medecine</h4>

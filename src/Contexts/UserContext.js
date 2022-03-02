@@ -19,6 +19,9 @@ const initialState = {
   },
   docViewPrev: {
     userInfo: []
+  },
+  insurances: {
+    insurance: []
   }
 };
 
@@ -166,6 +169,26 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const viewInsurance = async (token) => {
+    const config = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    };
+    const res = await (await fetch(`${url}/api/pharma/allInsurance`, config)).json();
+    if (res.status === 200) {
+      dispatch({
+        type: "VIEW_INSURANCES",
+        payload: res.data
+      });
+    }
+    else if (res.status === 401) {
+      localStorage.clear();
+      History.push('/');
+    }
+  };
+
 
 
   return (
@@ -176,7 +199,8 @@ export const UserProvider = ({ children }) => {
       pharmacyMedecines,
       docSeeAllMeds,
       pharmaViewTodayMeds,
-      DocviewPrevRecord
+      DocviewPrevRecord,
+      viewInsurance
     }} >
       {children}
     </UserContext.Provider>

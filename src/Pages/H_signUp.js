@@ -72,7 +72,7 @@ export const H_signUp = () => {
           <input placeholder="Confirm password" type="password" className="input" onChange={(e) => setState({ ...state, confirmPassword: e.target.value })} />
           {loading ? <button className="button">Loading.....</button>
             : <button className="button">Sign up</button>}
-          <p onClick={() => history.push("/h_page")} className="Donot" >Have account?</p>
+          <p onClick={() => history.push("/hospital")} className="Donot" >Have account?</p>
         </form>
       </div>
     </div>

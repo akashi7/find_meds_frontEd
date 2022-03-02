@@ -21,7 +21,8 @@ export const Reception = () => {
     age: "",
     phone: "",
     district: "",
-    sector: ""
+    sector: "",
+    insurance: ""
   };
 
   useEffect(() => {
@@ -36,11 +37,8 @@ export const Reception = () => {
   const [code, setCode] = useState('');
 
   const handlePatientReg = async (e) => {
-
     e.preventDefault();
-
     setLoading(true);
-
     const config = {
       method: "POST",
       headers: {
@@ -99,8 +97,10 @@ export const Reception = () => {
           <input placeholder="AGE" type="text" className="inputs" onChange={(e) => setState({ ...state, age: e.target.value })} />
           <input placeholder="DISTRICT" type="text" className="inputs" onChange={(e) => setState({ ...state, district: e.target.value })} />
           <input placeholder="SECTOR" type="text" className="inputs" onChange={(e) => setState({ ...state, sector: e.target.value })} />
+          <input placeholder="INSURANCE" type="text" className="inputs" onChange={(e) => setState({ ...state, insurance: e.target.value })} />
           {loading ? <button className="buttonk" >Loading......</button>
-            : <button className="buttonk" >Register</button>}
+            : <button className="buttonk" >Register</button>
+          }
         </form>
       </div>
     </div>

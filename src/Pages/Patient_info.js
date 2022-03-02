@@ -50,17 +50,13 @@ export const Patient_info = () => {
   }, []);
 
   const setSearch = (medecines) => {
-
     const seen = new Set();
-
     const uniqArr = docMeds;
-
     const filterdArray = uniqArr.filter(el => {
       const duplicate = seen.has(el.med_name);
       seen.add(el.med_name);
       return !duplicate;
     });
-
     if (!medecines) {
       setMeds([]);
     }
@@ -74,7 +70,6 @@ export const Patient_info = () => {
   };
 
   const handleCheckBox = (med) => {
-
     if (!checked) {
       setChecked(true);
       let Arr = state.medecines;
@@ -98,7 +93,13 @@ export const Patient_info = () => {
     }
   };
 
-  const Id = Math.random();
+  const generateId = () => {
+    const Ids = Math.random();
+    return Ids;
+  };
+
+  const Id = generateId();
+
 
   const removeElement = (el) => {
     let Arr = state.medecines;
@@ -111,7 +112,7 @@ export const Patient_info = () => {
     setState({ ...state, medecines: Arr });
   };
 
-  const handleSend = async (e, names, phone) => {
+  const handleSend = async (e, names, phone, insurance) => {
     e.preventDefault();
     if (!state.disease) {
       setError(true);
@@ -129,7 +130,7 @@ export const Patient_info = () => {
         },
         body: JSON.stringify(state)
       };
-      const res = await (await fetch(`${url}/api/doc/sendMeds?patient_name=${names}&&patient_phone=${phone}`, config)).json();
+      const res = await (await fetch(`${url}/api/doc/sendMeds?patient_name=${names}&&patient_phone=${phone}&&insurance=${insurance}`, config)).json();
       if (res.status === 200) {
         setLoading(false);
         setMessage('Sucessfully Sent');
@@ -196,7 +197,7 @@ export const Patient_info = () => {
         <div className="INFO" >
           <h3>Patient info</h3>
           <div className="space">
-            {P_info.patient.map(({ id, full_names, age, district, sector, phone }) => {
+            {P_info.patient.map(({ id, full_names, age, district, sector, phone, insurance }) => {
               return (
                 <div className="p_info" key={id}>
                   <p>Patient name : {full_names} </p>
@@ -215,12 +216,13 @@ export const Patient_info = () => {
                           <div className="sntDiv" >
                             <p key={Id}> {el} </p>
                             <p className="x" onClick={() => removeElement(el)} >X</p>
-                          </div>);
+                          </div>
+                        );
                       })}
                   </div>
                   {state.medecines.length > 0 ? (
                     <div> {loading ? <button className="buttonz">Loading....</button>
-                      : <button className="buttonz" onClick={(e, i, k) => handleSend(e, full_names, phone)}>SEND</button>} </div>
+                      : <button className="buttonz" onClick={(e, i, k, v) => handleSend(e, full_names, phone, insurance)}>SEND</button>} </div>
                   )
                     : ""}
                 </div>
